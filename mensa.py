@@ -25,6 +25,7 @@ CATEGORIES = (
     ("pizza-vegan", "Vegane Pizza"),
     ("nudelb-ffet", "Nudelbüffet"),
     ("gem-seb-ffet", "Gemüsebüffet"),
+    ("hinweis", "Hinweis"),
 )
 
 
