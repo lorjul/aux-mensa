@@ -14,7 +14,9 @@ COLOR_RESET = "\033[0m"
 
 CATEGORIES = (
     ("tellergericht-i", "Tellergericht 1"),
+    ("tellergericht-i-3-60", "Tellergericht 1"),
     ("tellergericht-ii", "Tellergericht 2"),
+    ("tellergericht-ii-3-90", "Tellergericht 2"),
     ("tellergericht-iii", "Tellergericht 3"),
     ("wok-gericht", "Asia"),
     ("grill", "Grill"),
