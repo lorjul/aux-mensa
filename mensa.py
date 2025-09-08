@@ -57,11 +57,7 @@ def main(date_query=None):
     # &shy; is a soft hyphen and is inserted into the dish names
     markup = markup.replace("&shy;", "")
     soup = BeautifulSoup(markup, features="lxml")
-    day_elts = soup.find_all(
-        name="div",
-        attrs={"data-role": "page"},
-        class_="essenliste page",
-    )
+    day_elts = soup.select('div.essenliste.page')
 
     for day_elt in day_elts:
         datestr = day_elt.get("data-date2")
@@ -76,7 +72,7 @@ def main(date_query=None):
         for item in items:
             # name
             name = item.find("h3").find(string=True, recursive=False).strip()
-            subnames = item.find("p", class_="ct text2share").find_all(
+            subnames = item.select_one("p.ct.text2share").find_all(
                 string=True, recursive=False
             )
             name += " " + " ".join([sn.strip() for sn in subnames])
@@ -95,9 +91,7 @@ def main(date_query=None):
                     price_width = len(str(price))
 
             # category
-            classes = item.get("class")
-            classes.remove("conditional")
-            classes.remove("checkempty")
+            classes = [c for c in item.get("class") if c not in ("conditional", "checkempty") and not c.startswith("dbg")]
             assert len(classes) == 1
             category = classes[0]
 
